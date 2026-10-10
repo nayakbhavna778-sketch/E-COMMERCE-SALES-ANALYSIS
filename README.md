@@ -1,36 +1,38 @@
-# 👥 HR Employee Attrition Analysis
+# 🛒 E-commerce Sales Analytics
 
-An end-to-end data analytics project that explores **why employees leave a company**. The project covers data cleaning in **Python**, business analysis in **SQL**, and an interactive dashboard in **Power BI**.
+An end-to-end data analytics project that explores **what drives sales in an online store**. The project covers data cleaning in **Python**, business analysis in **SQL** and an interactive dashboard in **Power BI** to understand revenue, customers, products, regions, payments and delivery.
 
 ---
 
 ## 📊 Dashboard Preview
 
-![HR Employee Attrition Dashboard](DASHBOARD%20PREVIEW.jpeg)
+![E-commerce Sales Dashboard](DASHBOARD%20REVIEW.jpeg)
 
 ---
 
 ## 📌 Project Overview
 
-Employee attrition is costly for any organisation: it means lost experience, rehiring costs and lower team productivity. This project analyses an HR dataset of **1,470 employees** to understand how attrition relates to factors such as department, job role, overtime, income and tenure.
+For any e-commerce business, knowing which products, regions and customers bring in the most revenue helps in planning stock, marketing and delivery. This project analyses a sales dataset of **5,000 orders** to answer key business questions about revenue, customer behaviour and operations.
 
 **Key numbers**
 
 | Metric | Value |
 |--------|-------|
-| Total employees | 1,470 |
-| Columns | 35 |
-| Employees who left | 237 |
-| Overall attrition rate | ~16.1% |
+| Total orders | 5,000 |
+| Columns | 12 |
+| Missing values | None |
+| Duplicate records | None |
 
 ---
 
 ## 🎯 Objectives
 
-- Inspect and clean the HR dataset (data types, missing values, duplicates)
-- Measure the overall attrition rate
-- Find which departments and job roles see the most attrition
-- Study the link between attrition and overtime, income and years at the company
+- Inspect and clean the sales dataset (data types, missing values, duplicates)
+- Calculate key business metrics: total revenue, units sold, unique customers, average rating and average order value
+- Find the best-performing product categories and regions
+- Identify top customers and high-value customers
+- Study monthly revenue trends
+- Compare payment methods, delivery times and the effect of discounts
 - Present the findings in an interactive Power BI dashboard
 
 ---
@@ -50,71 +52,96 @@ Employee attrition is costly for any organisation: it means lost experience, reh
 
 | File | Description |
 |------|-------------|
-| `HR-Employee-Attrition-cleaning.ipynb` | Python notebook with data inspection and cleaning steps |
-| `HR-Employee-cleaned.csv` | Cleaned dataset used for SQL and Power BI |
-| `SQL QUERIES HR EMPLOYEE ATTRITION.sql` | SQL queries for attrition, department, income, overtime, job role and tenure analysis |
-| `HR EMPLOYEE ATTRITION DASHBOARD.pbix` | Interactive Power BI dashboard |
-| `DASHBOARD PREVIEW.jpeg` | Screenshot of the dashboard |
+| `E-COMMERCE CLEANING.ipynb` | Python notebook with data inspection and cleaning steps |
+| `CLEANED E -COMMERCE SALES.csv` | Cleaned dataset used for SQL analysis |
+| `SQL QUERIES.sql` | SQL queries for revenue, customer, product, region, payment and delivery analysis |
+| `E-COMMERCE DASHBOARD.pbix` | Interactive Power BI dashboard |
+| `DASHBOARD REVIEW.jpeg` | Screenshot of the dashboard |
 | `README.md` | Project documentation |
+
+---
+
+## 🗂️ Dataset Description
+
+| Column | Description |
+|--------|-------------|
+| `order_id` | Unique ID of each order |
+| `order_date` | Date the order was placed |
+| `customer_id` | Unique ID of the customer |
+| `product_category` | Category of the product |
+| `region` | Region of the order |
+| `quantity` | Number of units ordered |
+| `unit_price` | Price per unit |
+| `discount` | Discount applied (as a fraction, e.g. 0.28 = 28%) |
+| `payment_method` | Mode of payment |
+| `delivery_days` | Days taken to deliver the order |
+| `customer_rating` | Customer rating for the order |
+| `revenue` | Total revenue from the order |
 
 ---
 
 ## 🔄 Project Workflow
 
 ### 1. Data Cleaning (Python)
-- Loaded the dataset and checked its structure with `head()` and `info()`
-- Checked for **missing values** and **duplicate records**
-- Reviewed the attrition split (1,233 stayed vs 237 left)
+- Loaded the dataset and checked its structure with `head()`, `tail()` and `info()`
+- Converted `order_date` from text to a proper **datetime** type
+- Checked for **missing values** and **duplicate records** (none found)
 - Saved the cleaned dataset for analysis
 
 ### 2. Data Analysis (SQL)
 Queries written to answer questions such as:
-- How many employees are there, and how many have left?
-- What is the overall attrition rate?
-- Which departments have the most employees and the most leavers?
-- What is the average monthly income by department, and which 5 job roles earn the most on average?
-- How many employees who work overtime have left?
-- Which job roles see the most attrition?
-- Do employees who leave have a shorter tenure than those who stay?
+- How many orders, how much revenue and how many units were sold in total?
+- How many unique customers are there, and what is the average customer rating?
+- What is the revenue by product category and by region?
+- Who are the top 10 customers, and which customers spend more than average?
+- What is the monthly revenue trend, and which month earned the most?
+- What is the average order value and the average revenue per customer?
+- Which category earns the most revenue, sells the most units and has the best rating?
+- How are categories ranked, and what share of total revenue does each contribute?
+- How do payment methods compare, and how long does delivery take in each region?
+- How does the discount level affect average revenue?
 
 ### 3. Dashboard (Power BI)
-An interactive dashboard that visualises attrition across departments, job roles, overtime, income and tenure.
+An interactive dashboard that visualises revenue, customers, product categories, regions and monthly trends.
 
 ---
 
 ## 💡 Business Insights
 
-- **Overall attrition:** About **1 in 6 employees (~16.1%)** has left the company: 237 out of 1,470.
-- **Imbalanced data:** 1,233 employees stayed versus 237 who left, so any future prediction model needs to account for this imbalance.
-- **Department:** `[ADD: department with the most leavers and its attrition rate]`
-- **Job role:** `[ADD: job roles with the highest attrition]`
-- **Overtime:** `[ADD: number/share of leavers who worked overtime, compared with employees who did not]`
-- **Income:** `[ADD: how average monthly income differs between departments / job roles]`
-- **Tenure:** `[ADD: average years at company for employees who left vs stayed]`
+- **Data quality:** The dataset has 5,000 orders with no missing values or duplicates. Order dates in the data run up to **2035**, which looks unusual and should be checked before drawing time-based conclusions.
+- **Total revenue and average order value:** `[ADD: total revenue and AOV]`
+- **Top product category:** `[ADD: category with the highest revenue and its % share]`
+- **Top regions:** `[ADD: regions ranked by revenue]`
+- **Best month:** `[ADD: month with the highest revenue and the overall trend]`
+- **Customers:** `[ADD: top customers and how much of revenue they contribute]`
+- **Payment methods:** `[ADD: which payment method brings the most revenue]`
+- **Delivery and ratings:** `[ADD: average delivery days by region and the best-rated category]`
+- **Discounts:** `[ADD: how average revenue changes with discount level]`
 
 ---
 
 ## ✅ Business Recommendations
 
-> Based on the insights above, the company can consider the following actions. Keep the points that your results support and remove the rest.
+> Based on the insights above, the business can consider the following actions. Keep the points that your results support and remove the rest.
 
-1. **Focus retention efforts on high-attrition departments and roles.** Run exit interviews and stay surveys there to find the specific reasons people leave.
-2. **Review overtime and workload.** If overtime employees leave more often, balance workloads, hire for peak periods and avoid long-term reliance on overtime.
-3. **Review pay competitiveness.** If leavers are concentrated in lower-income roles, benchmark salaries against the market and revisit raises and incentives.
-4. **Support early-tenure employees.** If people tend to leave within the first few years, improve onboarding, mentoring and career-path conversations.
-5. **Track attrition regularly.** Use the Power BI dashboard to monitor attrition by department, role and tenure so problems are spotted early.
+1. **Invest in top-performing categories.** Keep strong stock levels and promote the categories that bring the most revenue and sell the most units.
+2. **Support weaker categories and regions.** Use targeted offers or marketing where revenue is low.
+3. **Reward high-value customers.** Offer loyalty benefits to top spenders to keep them coming back.
+4. **Improve delivery in slow regions.** If some regions take longer to deliver, review logistics, since delivery time affects customer ratings.
+5. **Use discounts carefully.** If higher discounts do not lead to higher average revenue, reduce them to protect margins.
+6. **Plan around seasonality.** Prepare stock and campaigns for the months with the highest revenue.
 
 ---
 
 ## 🏁 Conclusion
 
-This project analysed the records of **1,470 employees** and found an overall attrition rate of about **16.1%** (237 employees left). The dataset had no missing values or duplicate records, so it was ready for analysis straight away.
+This project analysed **5,000 e-commerce orders** across 12 columns. The data was clean, with no missing values or duplicates, and the only data-type fix needed was converting `order_date` to datetime.
 
-Using **Python** for data inspection, **SQL** for business analysis and **Power BI** for visualisation, the project looked at how attrition varies across departments, job roles, overtime, income and tenure. `[ADD: one line on the biggest driver of attrition from your results]`
+Using **Python** for cleaning, **SQL** for analysis and **Power BI** for visualisation, the project looked at revenue, customers, product categories, regions, payment methods, delivery time and discounts. `[ADD: one line on the key finding from your results]`
 
-The findings can help HR teams identify where employees are most likely to leave and take targeted steps, such as reviewing workload, pay and early-career support, to improve retention.
+The findings can help the business decide where to focus stock, marketing and logistics to grow revenue and improve customer satisfaction.
 
-**Future scope:** build a machine learning model to predict which employees are at risk of leaving, keeping in mind that the data is imbalanced (1,233 stayed vs 237 left).
+**Future scope:** forecast future sales using time-series analysis.
 
 ---
 
@@ -122,11 +149,11 @@ The findings can help HR teams identify where employees are most likely to leave
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/nayakbhavna778-sketch/HR-EMPLOYEE-ATTRITION-ANALYSIS.git
+   git clone https://github.com/nayakbhavna778-sketch/E-COMMERCE-SALES-ANALYSIS.git
    ```
-2. Open `HR-Employee-Attrition-cleaning.ipynb` in Jupyter Notebook or Google Colab to view the cleaning steps.
-3. Run `SQL QUERIES HR EMPLOYEE ATTRITION.sql` in MySQL after loading `HR-Employee-cleaned.csv` into the `hr_employee_attrition` table.
-4. Open `HR EMPLOYEE ATTRITION DASHBOARD.pbix` in Power BI Desktop to explore the dashboard.
+2. Open `E-COMMERCE CLEANING.ipynb` in Jupyter Notebook or Google Colab to view the cleaning steps.
+3. Run `SQL QUERIES.sql` in MySQL after loading `CLEANED E -COMMERCE SALES.csv` into the `orders` table.
+4. Open `E-COMMERCE DASHBOARD.pbix` in Power BI Desktop to explore the dashboard.
 
 ---
 
