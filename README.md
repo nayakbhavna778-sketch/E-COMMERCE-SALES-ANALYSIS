@@ -1,158 +1,143 @@
-# 🛒 E-Commerce Sales Analysis
+# 👥 HR Employee Attrition Analysis
 
-An end-to-end data analytics project that takes an e-commerce sales dataset through **data cleaning (Python)**, **business analysis (SQL)** and **dashboarding (Power BI)** to uncover insights on revenue, customers, products, regions, payments and delivery.
+An end-to-end data analytics project that explores **why employees leave a company**. The project covers data cleaning in **Python**, business analysis in **SQL**, and an interactive dashboard in **Power BI**.
 
 ---
 
 ## 📊 Dashboard Preview
 
-![E-Commerce Sales Dashboard](DASHBOARD%20REVIEW.jpeg)
+![HR Employee Attrition Dashboard](DASHBOARD%20PREVIEW.jpeg)
 
 ---
 
-## 🎯 Project Objective
+## 📌 Project Overview
 
-To analyse 5,000 e-commerce orders and answer key business questions such as:
+Employee attrition is costly for any organisation: it means lost experience, rehiring costs and lower team productivity. This project analyses an HR dataset of **1,470 employees** to understand how attrition relates to factors such as department, job role, overtime, income and tenure.
 
-- How much revenue is the business generating, and how does it change over time?
-- Which product categories earn the most revenue and sell the most units?
-- Which payment methods do customers prefer?
-- Which regions perform best, and where is delivery slowest?
-- Who are the highest-value customers?
-- How do discounts affect revenue?
+**Key numbers**
+
+| Metric | Value |
+|--------|-------|
+| Total employees | 1,470 |
+| Columns | 35 |
+| Employees who left | 237 |
+| Overall attrition rate | ~16.1% |
 
 ---
 
-## 📁 Repository Structure
+## 🎯 Objectives
 
-| File | Description |
-|------|-------------|
-| `CLEANED E -COMMERCE SALES.csv` | Final cleaned dataset used for SQL analysis and the dashboard |
-| `E-COMMERCE CLEANING.ipynb` | Jupyter/Colab notebook with the data cleaning steps (Step 1) |
-| `SQL QUERIES.sql` | 24 SQL queries for business analysis (Step 2) |
-| `E-COMMERCE DASHBOARD.pbix` | Interactive Power BI dashboard (Step 3) |
-| `DASHBOARD REVIEW.jpeg` | Screenshot of the final dashboard |
-| `README.md` | Project documentation |
+- Inspect and clean the HR dataset (data types, missing values, duplicates)
+- Measure the overall attrition rate
+- Find which departments and job roles see the most attrition
+- Study the link between attrition and overtime, income and years at the company
+- Present the findings in an interactive Power BI dashboard
 
 ---
 
 ## 🛠️ Tools & Technologies
 
-- **Python** (pandas) – data loading, inspection and cleaning
-- **Google Colab / Jupyter Notebook** – notebook environment
-- **MySQL** – database used for SQL analysis
-- **Power BI** – dashboard design and visualisation
+| Tool | Purpose |
+|------|---------|
+| **Python (pandas)** | Data inspection and cleaning |
+| **SQL (MySQL)** | Business analysis queries |
+| **Power BI** | Interactive dashboard and visualisation |
+| **Jupyter / Google Colab** | Notebook environment |
 
 ---
 
-## 🗂️ Dataset Overview
+## 📂 Repository Contents
 
-**Size:** 5,000 orders × 12 columns
-
-| Column | Description |
-|--------|-------------|
-| `order_id` | Unique ID of each order |
-| `order_date` | Date the order was placed |
-| `customer_id` | Unique ID of the customer |
-| `product_category` | Category of the product (Beauty, Clothing, Electronics, Home) |
-| `region` | Region of the order (North, South, East, West) |
-| `quantity` | Number of units ordered |
-| `unit_price` | Price per unit |
-| `discount` | Discount applied, as a fraction (e.g. 0.28 = 28%) |
-| `payment_method` | Mode of payment (Card, COD, Wallet) |
-| `delivery_days` | Days taken to deliver the order |
-| `customer_rating` | Customer rating for the order |
-| `revenue` | Total revenue from the order |
+| File | Description |
+|------|-------------|
+| `HR-Employee-Attrition-cleaning.ipynb` | Python notebook with data inspection and cleaning steps |
+| `HR-Employee-cleaned.csv` | Cleaned dataset used for SQL and Power BI |
+| `SQL QUERIES HR EMPLOYEE ATTRITION.sql` | SQL queries for attrition, department, income, overtime, job role and tenure analysis |
+| `HR EMPLOYEE ATTRITION DASHBOARD.pbix` | Interactive Power BI dashboard |
+| `DASHBOARD PREVIEW.jpeg` | Screenshot of the dashboard |
+| `README.md` | Project documentation |
 
 ---
 
 ## 🔄 Project Workflow
 
-### Step 1 – Data Cleaning (Python)
-Done in `E-COMMERCE CLEANING.ipynb`:
+### 1. Data Cleaning (Python)
+- Loaded the dataset and checked its structure with `head()` and `info()`
+- Checked for **missing values** and **duplicate records**
+- Reviewed the attrition split (1,233 stayed vs 237 left)
+- Saved the cleaned dataset for analysis
 
-1. Imported pandas and loaded the raw CSV
-2. Inspected the data using `head()`, `tail()` and `info()`
-3. Converted `order_date` from text (`object`) to a proper **datetime** type
-4. Checked for **missing values** – none found in any column
-5. Checked for **duplicate rows** – none found
-6. Saved the cleaned dataset as a new CSV (`index=False`)
+### 2. Data Analysis (SQL)
+Queries written to answer questions such as:
+- How many employees are there, and how many have left?
+- What is the overall attrition rate?
+- Which departments have the most employees and the most leavers?
+- What is the average monthly income by department, and which 5 job roles earn the most on average?
+- How many employees who work overtime have left?
+- Which job roles see the most attrition?
+- Do employees who leave have a shorter tenure than those who stay?
 
-### Step 2 – SQL Analysis (MySQL)
-Done in `SQL QUERIES.sql`. The script creates the `ecommerce_db` database and an `orders` table, then answers 24 business questions covering:
-
-| Topic | Examples |
-|-------|----------|
-| **KPIs** | Total orders, total revenue, units sold, unique customers, average rating |
-| **Revenue breakdown** | Revenue by product category and by region, top 3 regions |
-| **Customer analysis** | Top 10 customers, customers above average spend, average revenue per customer |
-| **Time trends** | Monthly revenue trend, highest-revenue month, average order value |
-| **Product categories** | Top category by revenue/units, category ranking (`RANK()`), revenue share %, best-rated category |
-| **Payment & delivery** | Revenue and units by payment method, average delivery days per region |
-| **Discounts** | Average revenue at each discount level |
-
-SQL concepts used: `GROUP BY`, `HAVING`, aggregate functions, subqueries, window functions (`RANK() OVER`), date functions and `ROUND`.
-
-### Step 3 – Dashboard (Power BI)
-Built `E-COMMERCE DASHBOARD.pbix` with KPI cards, a monthly revenue trend, revenue by category, payment method split, sales by region and a ranked list of the top 5 customers.
+### 3. Dashboard (Power BI)
+An interactive dashboard that visualises attrition across departments, job roles, overtime, income and tenure.
 
 ---
 
-## 📈 Key Metrics
+## 💡 Business Insights
 
-| Metric | Value |
-|--------|-------|
-| 💰 Total Revenue | ₹5,109,776 |
-| 📦 Total Orders | 5,000 |
-| 👥 Total Customers | 989 |
-| 🛍️ Quantity Sold | ~20K |
-
----
-
-## 🔍 Key Insights
-
-- **Revenue trend:** Monthly revenue peaked in **May**, with another strong rise in **August**. April and September–December were the weakest months.
-- **Top category:** **Electronics** earns the most revenue (~₹1.8M), followed by **Clothing**, **Home** and **Beauty**.
-- **Payment methods:** **Card** is the most-used method (46.31%), followed by **Cash on Delivery** (35%) and **Wallet** (18.69%).
-- **Regional performance:** **West** leads (~₹1.35M), followed by North, South and East. The gap between regions is small, so demand is fairly balanced.
-- **Customer base:** Revenue is well spread out. Even the top customer (ID 1663) contributes only about **0.3%** of total revenue, so the business does not depend on a few big buyers.
+- **Overall attrition:** About **1 in 6 employees (~16.1%)** has left the company: 237 out of 1,470.
+- **Imbalanced data:** 1,233 employees stayed versus 237 who left, so any future prediction model needs to account for this imbalance.
+- **Department:** `[ADD: department with the most leavers and its attrition rate]`
+- **Job role:** `[ADD: job roles with the highest attrition]`
+- **Overtime:** `[ADD: number/share of leavers who worked overtime, compared with employees who did not]`
+- **Income:** `[ADD: how average monthly income differs between departments / job roles]`
+- **Tenure:** `[ADD: average years at company for employees who left vs stayed]`
 
 ---
 
-## ⚠️ Data Notes
+## ✅ Business Recommendations
 
-- The dataset contains order dates running from **2022 up to 2035**, which is well into the future. This suggests the data is synthetic/sample data, and time-based results should be read with that in mind.
-- No missing values or duplicate records were found, so no rows were removed during cleaning.
+> Based on the insights above, the company can consider the following actions. Keep the points that your results support and remove the rest.
+
+1. **Focus retention efforts on high-attrition departments and roles.** Run exit interviews and stay surveys there to find the specific reasons people leave.
+2. **Review overtime and workload.** If overtime employees leave more often, balance workloads, hire for peak periods and avoid long-term reliance on overtime.
+3. **Review pay competitiveness.** If leavers are concentrated in lower-income roles, benchmark salaries against the market and revisit raises and incentives.
+4. **Support early-tenure employees.** If people tend to leave within the first few years, improve onboarding, mentoring and career-path conversations.
+5. **Track attrition regularly.** Use the Power BI dashboard to monitor attrition by department, role and tenure so problems are spotted early.
+
+---
+
+## 🏁 Conclusion
+
+This project analysed the records of **1,470 employees** and found an overall attrition rate of about **16.1%** (237 employees left). The dataset had no missing values or duplicate records, so it was ready for analysis straight away.
+
+Using **Python** for data inspection, **SQL** for business analysis and **Power BI** for visualisation, the project looked at how attrition varies across departments, job roles, overtime, income and tenure. `[ADD: one line on the biggest driver of attrition from your results]`
+
+The findings can help HR teams identify where employees are most likely to leave and take targeted steps, such as reviewing workload, pay and early-career support, to improve retention.
+
+**Future scope:** build a machine learning model to predict which employees are at risk of leaving, keeping in mind that the data is imbalanced (1,233 stayed vs 237 left).
 
 ---
 
 ## 🚀 How to Use This Project
 
-1. **Clone the repository**
+1. Clone the repository
    ```bash
-   git clone https://github.com/nayakbhavna778-sketch/E-COMMERCE-SALES-ANALYSIS.git
+   git clone https://github.com/nayakbhavna778-sketch/HR-EMPLOYEE-ATTRITION-ANALYSIS.git
    ```
-2. **Review the cleaning process** – open `E-COMMERCE CLEANING.ipynb` in Jupyter Notebook, VS Code or Google Colab.
-3. **Run the SQL analysis**
-   - Open `SQL QUERIES.sql` in MySQL Workbench (or any MySQL client).
-   - Run the setup section to create `ecommerce_db` and the `orders` table.
-   - Import `CLEANED E -COMMERCE SALES.csv` into the `orders` table.
-   - Run the queries one by one.
-4. **Open the dashboard** – open `E-COMMERCE DASHBOARD.pbix` in [Power BI Desktop](https://powerbi.microsoft.com/desktop/).
+2. Open `HR-Employee-Attrition-cleaning.ipynb` in Jupyter Notebook or Google Colab to view the cleaning steps.
+3. Run `SQL QUERIES HR EMPLOYEE ATTRITION.sql` in MySQL after loading `HR-Employee-cleaned.csv` into the `hr_employee_attrition` table.
+4. Open `HR EMPLOYEE ATTRITION DASHBOARD.pbix` in Power BI Desktop to explore the dashboard.
 
 ---
 
-## 📌 Conclusion
+## 👩‍💻 About Me
 
-This project walks through a complete analytics workflow, from a raw sales file to a cleaned dataset, SQL-driven insights and an interactive dashboard. The findings highlight where revenue comes from (Electronics, West region, card payments) and show a healthy, evenly spread customer base.
+Hi, I'm **Riddhi**, a student based in Delhi, India, with a growing interest in data analytics. I enjoy turning raw data into clear insights and I work with **Python (pandas, NumPy), SQL, Power BI and Tableau**.
 
----
+This project is part of my data analytics portfolio, where I practise the full workflow: cleaning data, analysing it with SQL and presenting it visually.
 
-## 👩‍💻 Author
-
-**nayakbhavna778-sketch**
-GitHub: [@nayakbhavna778-sketch](https://github.com/nayakbhavna778-sketch)
+📫 **Connect with me:** [LinkedIn](add-your-link) | [Email](mailto:add-your-email)
 
 ---
 
-⭐ If you found this project helpful, feel free to star the repository!
+⭐ If you found this project useful, feel free to star the repository!
